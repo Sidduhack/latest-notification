@@ -1,57 +1,121 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>New Job Releases</title>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #fff1f2; margin: 0; padding: 20px; }
-        .container { max-width: 800px; margin: 0 auto; }
-        
-        .header-hot { 
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #fff1f2;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header-hot {
             background: linear-gradient(135deg, #be123c 0%, #fb7185 100%);
-            color: white; padding: 25px; border-radius: 12px; 
-            margin-bottom: 25px; box-shadow: 0 4px 15px rgba(225, 29, 72, 0.3);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(225, 29, 72, 0.3);
             text-align: center;
         }
-        .header-hot h1 { margin: 0; font-size: 28px; letter-spacing: 1px; }
-        .subtitle { font-size: 14px; opacity: 0.9; margin-top: 5px; }
+
+        .header-hot h1 {
+            margin: 0;
+            font-size: 28px;
+            letter-spacing: 1px;
+        }
+
+        .header-hot h5 {
+            margin: 0;
+            color: rgba(255, 255, 255, 0.212);
+        }
+
+
+        .subtitle {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
 
         .job-card {
-            background: white; border-radius: 10px; padding: 20px; 
-            margin-bottom: 15px; border-left: 6px solid #e11d48;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 6px solid #e11d48;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
         }
-        
-        .job-details h3 { margin: 0 0 10px 0; color: #1e293b; font-size: 18px; }
-        .badge { background: #ffe4e6; color: #be123c; font-size: 12px; padding: 4px 8px; border-radius: 4px; font-weight: bold; margin-right: 8px;}
-        .info-row { font-size: 13px; color: #64748b; margin-top: 5px; display: flex; gap: 15px; align-items: center;}
-        
+
+        .job-details h3 {
+            margin: 0 0 10px 0;
+            color: #1e293b;
+            font-size: 18px;
+        }
+
+        .badge {
+            background: #ffe4e6;
+            color: #be123c;
+            font-size: 12px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .info-row {
+            font-size: 13px;
+            color: #64748b;
+            margin-top: 5px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
         .btn-apply {
-            background-color: #e11d48; color: white; padding: 10px 24px; 
-            text-decoration: none; border-radius: 6px; font-weight: bold; 
+            background-color: #e11d48;
+            color: white;
+            padding: 10px 24px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
             transition: transform 0.1s;
         }
-        .btn-apply:hover { background-color: #be123c; transform: scale(1.05); }
 
+        .btn-apply:hover {
+            background-color: #be123c;
+            transform: scale(1.05);
+        }
     </style>
 </head>
+
 <body>
     <div class="container">
         <!-- HEADER -->
         <div class="header-hot">
             <h1>🔥 FRESH RELEASES</h1>
-            <div class="subtitle">Jobs Posted Today: 24 Jan 2026</div>
+            <h5> Filter by Qulification </h5>
+            <div class="subtitle">Jobs Posted Today: $input.first().json['Readable date']</div>
         </div>
-
+        
         <div class="job-card">
             <div class="job-details">
                 <h3>Technician, Attendant and More – 239 Posts</h3>
                 <div class="info-row">
                     <span><span class="badge">REQ</span> Any Bachelors Degree, B.B.A, B.Com, B.Pharma, B.Sc, Diploma, B.Lib, 12TH, 10TH,
 Any Masters Degree</span>
-                    <span>📝 Posts: <b>1+</b></span>
                     <span>🕒 Close: 25-03-2026</span>
                 </div>
             </div>
@@ -59,13 +123,12 @@ Any Masters Degree</span>
                 <a href="https://www.freejobalert.com/articles/jk-anganwadi-recruitment-2026-apply-offline-for-anganwadi-helpers-and-workers-posts-3034313" class="btn-apply" target="_blank">APPLY</a>
             </div>
         </div>
-    
+        
         <div class="job-card">
             <div class="job-details">
                 <h3>MTS, Nursing Assistant and More – 15 Posts</h3>
                 <div class="info-row">
                     <span><span class="badge">REQ</span> Any Graduate, BDS, B.Sc, MBBS, Diploma, GNM</span>
-                    <span>📝 Posts: <b>1+</b></span>
                     <span>🕒 Close: 12-02-2026</span>
                 </div>
             </div>
@@ -73,13 +136,12 @@ Any Masters Degree</span>
                 <a href="https://www.freejobalert.com/articles/jssc-special-teacher-recruitment-2025-apply-online-for-3451-posts-3031823" class="btn-apply" target="_blank">APPLY</a>
             </div>
         </div>
-    
+        
         <div class="job-card">
             <div class="job-details">
                 <h3>Ayurveda Pharmacist</h3>
                 <div class="info-row">
                     <span><span class="badge">REQ</span> Diploma</span>
-                    <span>📝 Posts: <b>1+</b></span>
                     <span>🕒 Close: 27-01-2026</span>
                 </div>
             </div>
@@ -87,13 +149,12 @@ Any Masters Degree</span>
                 <a href="https://www.freejobalert.com/articles/cmd-lsgd-kerala-recruitment-2026-apply-online-for-231-engineer-lab-assistant-and-other-posts-3035333" class="btn-apply" target="_blank">APPLY</a>
             </div>
         </div>
-    
+        
         <div class="job-card">
             <div class="job-details">
                 <h3>MTS, Nursing Assistant and More – 15 Posts</h3>
                 <div class="info-row">
                     <span><span class="badge">REQ</span> Any Graduate, BDS, B.Sc, MBBS, Diploma, GNM</span>
-                    <span>📝 Posts: <b>1+</b></span>
                     <span>🕒 Close: 12-02-2026</span>
                 </div>
             </div>
@@ -101,13 +162,12 @@ Any Masters Degree</span>
                 <a href="https://www.freejobalert.com/articles/echs-hisar-recruitment-2026-apply-offline-for-178-peon-clerk-driver-and-more-posts-3035598" class="btn-apply" target="_blank">APPLY</a>
             </div>
         </div>
-    
+        
         <div class="job-card">
             <div class="job-details">
                 <h3>Ayurveda Pharmacist</h3>
                 <div class="info-row">
                     <span><span class="badge">REQ</span> Diploma</span>
-                    <span>📝 Posts: <b>1+</b></span>
                     <span>🕒 Close: 27-01-2026</span>
                 </div>
             </div>
@@ -115,10 +175,11 @@ Any Masters Degree</span>
                 <a href="https://www.freejobalert.com/articles/esic-faridabad-senior-resident-recruitment-2026-walk-in-for-50-posts-3035597" class="btn-apply" target="_blank">APPLY</a>
             </div>
         </div>
-    
+        
         <div style="text-align: center; margin-top: 30px; font-size: 12px; color: #999;">
             Verified New • bhanu n8n Automation
         </div>
     </div>
 </body>
+
 </html>
