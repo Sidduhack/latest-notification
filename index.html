@@ -1,245 +1,361 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>New Job Releases</title>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #fff1f2; margin: 0; padding: 20px; }
-        .container { max-width: 800px; margin: 0 auto; }
-        .header-hot { background: linear-gradient(135deg, #be123c 0%, #fb7185 100%); color: white; padding: 25px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(225, 29, 72, 0.3); text-align: center; }
-        .header-hot h1 { margin: 0; font-size: 28px; letter-spacing: 1px; }
-        .subtitle { font-size: 13px; opacity: 0.9; margin-top: 8px; background: rgba(0, 0, 0, 0.1); display: inline-block; padding: 4px 12px; border-radius: 20px; }
-        .job-card { background: white; border-radius: 10px; padding: 20px; margin-bottom: 15px; border-left: 6px solid #e11d48; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); display: flex; align-items: center; justify-content: space-between; gap: 15px; transition: all 0.3s ease; }
-        .job-card:hover { box-shadow: 0 8px 20px rgba(225, 29, 72, 0.15); transform: translateY(-2px); }
-        .job-details { flex: 1; min-width: 0; }
-        .job-details h3 { margin: 0 0 10px 0; color: #1e293b; font-size: 18px; line-height: 1.3; }
-        .badge { background: #ffe4e6; color: #be123c; font-size: 12px; padding: 4px 8px; border-radius: 4px; font-weight: bold; margin-right: 8px; }
-        .info-row { font-size: 13px; color: #64748b; margin-top: 5px; display: flex; gap: 15px; flex-wrap: wrap; }
-        .btn-container { flex-shrink: 0; }
-        .btn-apply { background-color: #e11d48; color: white !important; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block; transition: background 0.2s; }
-        .btn-apply:hover { background-color: #be123c; }
-        @media screen and (max-width: 600px) { .job-card { flex-direction: column; align-items: flex-start; } .btn-container { width: 100%; margin-top: 10px; } .btn-apply { display: block; text-align: center; } }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #fff1f2;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header-hot {
+            background: linear-gradient(135deg, #be123c 0%, #fb7185 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(225, 29, 72, 0.3);
+            text-align: center;
+        }
+
+        .header-hot h1 {
+            margin: 0;
+            font-size: 28px;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-size: 13px;
+            opacity: 0.9;
+            margin-top: 8px;
+            background: rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        /* Job Card - Fixed Flex for no wrapping */
+        .job-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 6px solid #e11d48;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            transition: all 0.3s ease;
+            /* Smooth transition for hover */
+        }
+
+        /* Subtle Hover Shadow */
+        .job-card:hover {
+            box-shadow: 0 8px 20px rgba(225, 29, 72, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .job-details {
+            flex: 1;
+            min-width: 0;
+        }
+
+        /* Allows title to wrap but button stays fixed */
+        .job-details h3 {
+            margin: 0 0 10px 0;
+            color: #1e293b;
+            font-size: 18px;
+            line-height: 1.3;
+        }
+
+        .badge {
+            background: #ffe4e6;
+            color: #be123c;
+            font-size: 12px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .info-row {
+            font-size: 13px;
+            color: #64748b;
+            margin-top: 5px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn-container {
+            flex-shrink: 0;
+        }
+
+        /* Prevents the button from squashing */
+        .btn-apply {
+            background-color: #e11d48;
+            color: white !important;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            display: inline-block;
+            transition: background 0.2s;
+        }
+
+        .btn-apply:hover {
+            background-color: #be123c;
+        }
+
+        @media screen and (max-width: 600px) {
+            .job-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .btn-container {
+                width: 100%;
+                margin-top: 10px;
+            }
+
+            .btn-apply {
+                display: block;
+                text-align: center;
+            }
+        }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="header-hot">
             <h1>🔥 FRESH RELEASES</h1>
-            <div class="subtitle">Updated: <b>2 Feb 2026</b> at <b>01:58 pm (IST)</b></div>
+            <div class="subtitle">Updated: <b>2 Feb 2026</b> at <b>08:30 am</b></div>
         </div>
-
-    <div class="job-card">
-        <div class="job-details">
-            <h3>Chief Information Security Officer</h3>
-            <div class="info-row">
-                <span><span class="badge">REQ</span> B.Sc, Diploma, M.Sc, MCA</span>
-                <span style="font-weight: 500;">🕒 Close: 04-02-2026</span>
+        
+        <div class="job-card">
+            <div class="job-details">
+                <h3>Chief Information Security Officer</h3>
+                <div class="info-row">
+                    <span><span class="badge">REQ</span> B.Sc, Diploma, M.Sc, MCA</span>
+                    <span style="font-weight: 500;">🕒 Close: 04-02-2026</span>
+                </div>
+            </div>
+            <div class="btn-container">
+                <a href="https://www.freejobalert.com/articles/amco-bank-chief-information-security-officer-recruitment-2026-apply-online-for-01-posts-3036257" class="btn-apply" target="_blank">APPLY</a>
             </div>
         </div>
-        <div class="btn-container">
-            <a href="https://www.freejobalert.com/articles/amco-bank-chief-information-security-officer-recruitment-2026-apply-online-for-01-posts-3036257" class="btn-apply" target="_blank">APPLY</a>
-        </div>
-    </div>
-    
-    <div class="job-card">
-        <div class="job-details">
-            <h3>Agniveervayu</h3>
-            <div class="info-row">
-                <span><span class="badge">REQ</span> Diploma, 12TH, 10TH</span>
-                <span style="font-weight: 500;">🕒 Close: 08-02-2026</span>
+        
+        <div class="job-card">
+            <div class="job-details">
+                <h3>Agniveervayu</h3>
+                <div class="info-row">
+                    <span><span class="badge">REQ</span> Diploma, 12TH, 10TH</span>
+                    <span style="font-weight: 500;">🕒 Close: 08-02-2026</span>
+                </div>
+            </div>
+            <div class="btn-container">
+                <a href="https://www.freejobalert.com/articles/sports-authority-of-india-performance-analyst-recruitment-2026-apply-online-for-48-posts-3036215" class="btn-apply" target="_blank">APPLY</a>
             </div>
         </div>
-        <div class="btn-container">
-            <a href="https://www.freejobalert.com/articles/sports-authority-of-india-performance-analyst-recruitment-2026-apply-online-for-48-posts-3036215" class="btn-apply" target="_blank">APPLY</a>
-        </div>
-    </div>
-    
-    <div class="job-card">
-        <div class="job-details">
-            <h3>Various Non-Academic</h3>
-            <div class="info-row">
-                <span><span class="badge">REQ</span> Any Bachelors Degree, Diploma, Any Masters Degree</span>
-                <span style="font-weight: 500;">🕒 Close: 02-02-2026</span>
+        
+        <div class="job-card">
+            <div class="job-details">
+                <h3>Various Non-Academic</h3>
+                <div class="info-row">
+                    <span><span class="badge">REQ</span> Any Bachelors Degree, Diploma, Any Masters Degree</span>
+                    <span style="font-weight: 500;">🕒 Close: 02-02-2026</span>
+                </div>
+            </div>
+            <div class="btn-container">
+                <a href="https://www.freejobalert.com/articles/rrb-group-d-recruitment-2026-apply-online-for-22000-posts-3033409" class="btn-apply" target="_blank">APPLY</a>
             </div>
         </div>
-        <div class="btn-container">
-            <a href="https://www.freejobalert.com/articles/rrb-group-d-recruitment-2026-apply-online-for-22000-posts-3033409" class="btn-apply" target="_blank">APPLY</a>
-        </div>
-    </div>
-    
-    <div class="job-card">
-        <div class="job-details">
-            <h3>Agniveervayu</h3>
-            <div class="info-row">
-                <span><span class="badge">REQ</span> Diploma, 12TH, 10TH</span>
-                <span style="font-weight: 500;">🕒 Close: 08-02-2026</span>
+        
+        <div class="job-card">
+            <div class="job-details">
+                <h3>Agniveervayu</h3>
+                <div class="info-row">
+                    <span><span class="badge">REQ</span> Diploma, 12TH, 10TH</span>
+                    <span style="font-weight: 500;">🕒 Close: 08-02-2026</span>
+                </div>
+            </div>
+            <div class="btn-container">
+                <a href="https://www.freejobalert.com/articles/assam-police-forest-guard-recruitment-2026-apply-online-for-2-972-posts-3035005" class="btn-apply" target="_blank">APPLY</a>
             </div>
         </div>
-        <div class="btn-container">
-            <a href="https://www.freejobalert.com/articles/assam-police-forest-guard-recruitment-2026-apply-online-for-2-972-posts-3035005" class="btn-apply" target="_blank">APPLY</a>
-        </div>
-    </div>
-    
-    <div class="job-card">
-        <div class="job-details">
-            <h3>Project Technical Support I</h3>
-            <div class="info-row">
-                <span><span class="badge">REQ</span> Diploma, ITI, 10TH, DMLT, MLT</span>
-                <span style="font-weight: 500;">🕒 Close: 15-02-2026</span>
+        
+        <div class="job-card">
+            <div class="job-details">
+                <h3>Project Technical Support I</h3>
+                <div class="info-row">
+                    <span><span class="badge">REQ</span> Diploma, ITI, 10TH, DMLT, MLT</span>
+                    <span style="font-weight: 500;">🕒 Close: 15-02-2026</span>
+                </div>
+            </div>
+            <div class="btn-container">
+                <a href="https://www.freejobalert.com/articles/indian-air-force-iaf-agniveer-intake-01-2027-notification-2026-apply-online-3034724" class="btn-apply" target="_blank">APPLY</a>
             </div>
         </div>
-        <div class="btn-container">
-            <a href="https://www.freejobalert.com/articles/indian-air-force-iaf-agniveer-intake-01-2027-notification-2026-apply-online-3034724" class="btn-apply" target="_blank">APPLY</a>
-        </div>
-    </div>
-    
-    <div class="job-card">
-        <div class="job-details">
-            <h3>Senior Resident</h3>
-            <div class="info-row">
-                <span><span class="badge">REQ</span> Diploma, DNB, MS/MD</span>
-                <span style="font-weight: 500;">🕒 Close: 06-02-2026</span>
+        
+        <div class="job-card">
+            <div class="job-details">
+                <h3>Senior Resident</h3>
+                <div class="info-row">
+                    <span><span class="badge">REQ</span> Diploma, DNB, MS/MD</span>
+                    <span style="font-weight: 500;">🕒 Close: 06-02-2026</span>
+                </div>
+            </div>
+            <div class="btn-container">
+                <a href="https://www.freejobalert.com/articles/dr-nc-joshi-memorial-hospital-senior-resident-recruitment-2026-walk-in-for-01-posts-3036222" class="btn-apply" target="_blank">APPLY</a>
             </div>
         </div>
-        <div class="btn-container">
-            <a href="https://www.freejobalert.com/articles/dr-nc-joshi-memorial-hospital-senior-resident-recruitment-2026-walk-in-for-01-posts-3036222" class="btn-apply" target="_blank">APPLY</a>
-        </div>
-    </div>
-    
-    <div class="job-card">
-        <div class="job-details">
-            <h3>Various Non-Academic</h3>
-            <div class="info-row">
-                <span><span class="badge">REQ</span> Any Bachelors Degree, Diploma, Any Masters Degree</span>
-                <span style="font-weight: 500;">🕒 Close: 02-02-2026</span>
+        
+        <div class="job-card">
+            <div class="job-details">
+                <h3>Various Non-Academic</h3>
+                <div class="info-row">
+                    <span><span class="badge">REQ</span> Any Bachelors Degree, Diploma, Any Masters Degree</span>
+                    <span style="font-weight: 500;">🕒 Close: 02-02-2026</span>
+                </div>
+            </div>
+            <div class="btn-container">
+                <a href="https://www.freejobalert.com/articles/iit-delhi-principal-project-scientist-recruitment-2026-apply-online-for-01-posts-3036199" class="btn-apply" target="_blank">APPLY</a>
             </div>
         </div>
-        <div class="btn-container">
-            <a href="https://www.freejobalert.com/articles/iit-delhi-principal-project-scientist-recruitment-2026-apply-online-for-01-posts-3036199" class="btn-apply" target="_blank">APPLY</a>
-        </div>
-    </div>
-    
-    <div class="job-card">
-        <div class="job-details">
-            <h3>Chief Information Security Officer</h3>
-            <div class="info-row">
-                <span><span class="badge">REQ</span> B.Sc, Diploma, M.Sc, MCA</span>
-                <span style="font-weight: 500;">🕒 Close: 04-02-2026</span>
+        
+        <div class="job-card">
+            <div class="job-details">
+                <h3>Chief Information Security Officer</h3>
+                <div class="info-row">
+                    <span><span class="badge">REQ</span> B.Sc, Diploma, M.Sc, MCA</span>
+                    <span style="font-weight: 500;">🕒 Close: 04-02-2026</span>
+                </div>
+            </div>
+            <div class="btn-container">
+                <a href="https://www.freejobalert.com/articles/iit-gandhinagar-achievers-post-doctoral-recruitment-2026-apply-online-3036169" class="btn-apply" target="_blank">APPLY</a>
             </div>
         </div>
-        <div class="btn-container">
-            <a href="https://www.freejobalert.com/articles/iit-gandhinagar-achievers-post-doctoral-recruitment-2026-apply-online-3036169" class="btn-apply" target="_blank">APPLY</a>
-        </div>
-    </div>
-    
-    <div class="job-card">
-        <div class="job-details">
-            <h3>Overman, Assistant Colliery Engineer and More</h3>
-            <div class="info-row">
-                <span><span class="badge">REQ</span> B.Tech/B.E, Diploma, MBA/PGDM</span>
-                <span style="font-weight: 500;">🕒 Close: 17-02-2026</span>
+        
+        <div class="job-card">
+            <div class="job-details">
+                <h3>Overman, Assistant Colliery Engineer and More</h3>
+                <div class="info-row">
+                    <span><span class="badge">REQ</span> B.Tech/B.E, Diploma, MBA/PGDM</span>
+                    <span style="font-weight: 500;">🕒 Close: 17-02-2026</span>
+                </div>
+            </div>
+            <div class="btn-container">
+                <a href="https://www.freejobalert.com/articles/iit-ism-dhanbad-project-associate-i-recruitment-2026-apply-online-for-01-posts-3036042" class="btn-apply" target="_blank">APPLY</a>
             </div>
         </div>
-        <div class="btn-container">
-            <a href="https://www.freejobalert.com/articles/iit-ism-dhanbad-project-associate-i-recruitment-2026-apply-online-for-01-posts-3036042" class="btn-apply" target="_blank">APPLY</a>
-        </div>
-    </div>
-    
-    <div class="job-card">
-        <div class="job-details">
-            <h3>Non Teaching</h3>
-            <div class="info-row">
-                <span><span class="badge">REQ</span> Any Bachelors Degree, B.Tech/B.E, Diploma, Any Post Graduate</span>
-                <span style="font-weight: 500;">🕒 Close: 28-02-2026</span>
+        
+        <div class="job-card">
+            <div class="job-details">
+                <h3>Non Teaching</h3>
+                <div class="info-row">
+                    <span><span class="badge">REQ</span> Any Bachelors Degree, B.Tech/B.E, Diploma, Any Post Graduate</span>
+                    <span style="font-weight: 500;">🕒 Close: 28-02-2026</span>
+                </div>
+            </div>
+            <div class="btn-container">
+                <a href="https://www.freejobalert.com/articles/nhm-shsrc-recruitment-2026-apply-online-for-13-executive-director-advisor-and-more-posts-3036004" class="btn-apply" target="_blank">APPLY</a>
             </div>
         </div>
-        <div class="btn-container">
-            <a href="https://www.freejobalert.com/articles/nhm-shsrc-recruitment-2026-apply-online-for-13-executive-director-advisor-and-more-posts-3036004" class="btn-apply" target="_blank">APPLY</a>
-        </div>
-    </div>
-    
-    <div class="job-card">
-        <div class="job-details">
-            <h3>Apprentice</h3>
-            <div class="info-row">
-                <span><span class="badge">REQ</span> Diploma, 12TH</span>
-                <span style="font-weight: 500;">🕒 Close: 05-02-2026</span>
+        
+        <div class="job-card">
+            <div class="job-details">
+                <h3>Apprentice</h3>
+                <div class="info-row">
+                    <span><span class="badge">REQ</span> Diploma, 12TH</span>
+                    <span style="font-weight: 500;">🕒 Close: 05-02-2026</span>
+                </div>
+            </div>
+            <div class="btn-container">
+                <a href="https://www.freejobalert.com/articles/cusat-technical-assistant-grade-iii-recruitment-2026-apply-online-for-03-posts-3036060" class="btn-apply" target="_blank">APPLY</a>
             </div>
         </div>
-        <div class="btn-container">
-            <a href="https://www.freejobalert.com/articles/cusat-technical-assistant-grade-iii-recruitment-2026-apply-online-for-03-posts-3036060" class="btn-apply" target="_blank">APPLY</a>
-        </div>
-    </div>
-    
-    <div class="job-card">
-        <div class="job-details">
-            <h3>Project Technical Support III</h3>
-            <div class="info-row">
-                <span><span class="badge">REQ</span> M.Sc, PG Diploma</span>
-                <span style="font-weight: 500;">🕒 Close: 12-02-2026</span>
+        
+        <div class="job-card">
+            <div class="job-details">
+                <h3>Project Technical Support III</h3>
+                <div class="info-row">
+                    <span><span class="badge">REQ</span> M.Sc, PG Diploma</span>
+                    <span style="font-weight: 500;">🕒 Close: 12-02-2026</span>
+                </div>
+            </div>
+            <div class="btn-container">
+                <a href="https://www.freejobalert.com/articles/tiss-administrative-assistant-recruitment-2026-apply-online-for-11-posts-3036192" class="btn-apply" target="_blank">APPLY</a>
             </div>
         </div>
-        <div class="btn-container">
-            <a href="https://www.freejobalert.com/articles/tiss-administrative-assistant-recruitment-2026-apply-online-for-11-posts-3036192" class="btn-apply" target="_blank">APPLY</a>
-        </div>
-    </div>
-    
-    <div class="job-card">
-        <div class="job-details">
-            <h3>DEO, Clerk And More</h3>
-            <div class="info-row">
-                <span><span class="badge">REQ</span> Any Graduate, BDS, B.Sc, MBBS, Diploma, Master of Dental Surgery, MS/MD, DMLT</span>
-                <span style="font-weight: 500;">🕒 Close: 23-02-2026</span>
+        
+        <div class="job-card">
+            <div class="job-details">
+                <h3>DEO, Clerk And More</h3>
+                <div class="info-row">
+                    <span><span class="badge">REQ</span> Any Graduate, BDS, B.Sc, MBBS, Diploma, Master of Dental Surgery, MS/MD, DMLT</span>
+                    <span style="font-weight: 500;">🕒 Close: 23-02-2026</span>
+                </div>
+            </div>
+            <div class="btn-container">
+                <a href="https://www.freejobalert.com/articles/pm-shri-kendriya-vidyalaya-no2-ferozepur-cantt-recruitment-2026-walk-in-for-pgt-tgt-and-other-posts-3036032" class="btn-apply" target="_blank">APPLY</a>
             </div>
         </div>
-        <div class="btn-container">
-            <a href="https://www.freejobalert.com/articles/pm-shri-kendriya-vidyalaya-no2-ferozepur-cantt-recruitment-2026-walk-in-for-pgt-tgt-and-other-posts-3036032" class="btn-apply" target="_blank">APPLY</a>
-        </div>
-    </div>
-    
-    <div class="job-card">
-        <div class="job-details">
-            <h3>AI Engineer, Accountant and Other</h3>
-            <div class="info-row">
-                <span><span class="badge">REQ</span> B.Tech/B.E, Diploma, CA, ICWA, MBA/PGDM, MCA</span>
-                <span style="font-weight: 500;">🕒 Close: 10-03-2026</span>
+        
+        <div class="job-card">
+            <div class="job-details">
+                <h3>AI Engineer, Accountant and Other</h3>
+                <div class="info-row">
+                    <span><span class="badge">REQ</span> B.Tech/B.E, Diploma, CA, ICWA, MBA/PGDM, MCA</span>
+                    <span style="font-weight: 500;">🕒 Close: 10-03-2026</span>
+                </div>
+            </div>
+            <div class="btn-container">
+                <a href="https://www.freejobalert.com/articles/csir-cimap-recruitment-2026-walk-in-for-03-project-associate-i-ii-and-senior-project-associate-posts-3036176" class="btn-apply" target="_blank">APPLY</a>
             </div>
         </div>
-        <div class="btn-container">
-            <a href="https://www.freejobalert.com/articles/csir-cimap-recruitment-2026-walk-in-for-03-project-associate-i-ii-and-senior-project-associate-posts-3036176" class="btn-apply" target="_blank">APPLY</a>
-        </div>
-    </div>
-    
-    <div class="job-card">
-        <div class="job-details">
-            <h3>Sub Assistant Engineer</h3>
-            <div class="info-row">
-                <span><span class="badge">REQ</span> Diploma</span>
-                <span style="font-weight: 500;">🕒 Close: 16-02-2026</span>
+        
+        <div class="job-card">
+            <div class="job-details">
+                <h3>Sub Assistant Engineer</h3>
+                <div class="info-row">
+                    <span><span class="badge">REQ</span> Diploma</span>
+                    <span style="font-weight: 500;">🕒 Close: 16-02-2026</span>
+                </div>
+            </div>
+            <div class="btn-container">
+                <a href="https://www.freejobalert.com/articles/ihm-kolkata-lower-division-clerk-recruitment-2026-apply-offline-for-03-posts-3036183" class="btn-apply" target="_blank">APPLY</a>
             </div>
         </div>
-        <div class="btn-container">
-            <a href="https://www.freejobalert.com/articles/ihm-kolkata-lower-division-clerk-recruitment-2026-apply-offline-for-03-posts-3036183" class="btn-apply" target="_blank">APPLY</a>
-        </div>
-    </div>
-    
-    <div class="job-card">
-        <div class="job-details">
-            <h3>DEO, Clerk And More</h3>
-            <div class="info-row">
-                <span><span class="badge">REQ</span> Any Graduate, BDS, B.Sc, MBBS, Diploma, Master of Dental Surgery, MS/MD, DMLT</span>
-                <span style="font-weight: 500;">🕒 Close: 23-02-2026</span>
+        
+        <div class="job-card">
+            <div class="job-details">
+                <h3>DEO, Clerk And More</h3>
+                <div class="info-row">
+                    <span><span class="badge">REQ</span> Any Graduate, BDS, B.Sc, MBBS, Diploma, Master of Dental Surgery, MS/MD, DMLT</span>
+                    <span style="font-weight: 500;">🕒 Close: 23-02-2026</span>
+                </div>
+            </div>
+            <div class="btn-container">
+                <a href="https://www.freejobalert.com/articles/niper-guwahati-recruitment-2026-apply-online-for-03-assistant-professor-medical-officer-posts-3036179" class="btn-apply" target="_blank">APPLY</a>
             </div>
         </div>
-        <div class="btn-container">
-            <a href="https://www.freejobalert.com/articles/niper-guwahati-recruitment-2026-apply-online-for-03-assistant-professor-medical-officer-posts-3036179" class="btn-apply" target="_blank">APPLY</a>
-        </div>
-    </div>
-    
+        
         <div style="text-align: center; margin-top: 30px; font-size: 12px; color: #999;">
             Verified New • bhanu n8n Automation
         </div>
     </div>
 </body>
+
 </html>
